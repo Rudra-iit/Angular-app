@@ -1,17 +1,17 @@
 import { createRequire } from 'module';const require = createRequire(import.meta.url);
 import {
+  withHttpTransferCache
+} from "./chunk-B7RE2A5G.js";
+import {
   CommonModule,
   PLATFORM_BROWSER_ID
-} from "./chunk-Z5FGMD56.js";
-import {
-  withHttpTransferCache
-} from "./chunk-3DOQCUXI.js";
+} from "./chunk-WAMIVCBV.js";
 import {
   DomAdapter,
   getDOM,
   parseCookieValue,
   setRootDomAdapter
-} from "./chunk-YGMWBLWY.js";
+} from "./chunk-CKKG5TI3.js";
 import {
   APP_BOOTSTRAP_LISTENER,
   APP_ID,
@@ -1561,4 +1561,4 @@ export {
   DomSanitizerImpl,
   VERSION
 };
-//# sourceMappingURL=chunk-OWP4525G.js.map
+//# sourceMappingURL=chunk-7PYWOL5B.js.map
