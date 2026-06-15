@@ -1,4 +1,17 @@
 import {
+  ErrorStateMatcher
+} from "./chunk-NCVDVAAF.js";
+import {
+  FormGroupDirective,
+  NgControl,
+  NgForm,
+  Validators
+} from "./chunk-VW3FUZH7.js";
+import {
+  AutofillMonitor,
+  TextFieldModule
+} from "./chunk-Y24CI24R.js";
+import {
   MAT_FORM_FIELD,
   MatError,
   MatFormField,
@@ -8,30 +21,20 @@ import {
   MatLabel,
   MatPrefix,
   MatSuffix
-} from "./chunk-MR4DA6U6.js";
-import {
-  AutofillMonitor,
-  TextFieldModule
-} from "./chunk-Y24CI24R.js";
-import {
-  FormGroupDirective,
-  NgControl,
-  NgForm,
-  Validators
-} from "./chunk-VW3FUZH7.js";
+} from "./chunk-TDFTR3RF.js";
 import {
   _IdGenerator,
   coerceBooleanProperty,
   getSupportedInputTypes
-} from "./chunk-6LDYNFRV.js";
+} from "./chunk-7R7U34AW.js";
 import "./chunk-T5SGBVUH.js";
-import "./chunk-IJWZSNBN.js";
+import "./chunk-VWYQTFN4.js";
 import {
   Platform
 } from "./chunk-U2W4YTOG.js";
 import "./chunk-Q5UF4LUQ.js";
-import "./chunk-IE7YWQRS.js";
 import "./chunk-22VCKL3B.js";
+import "./chunk-IE7YWQRS.js";
 import "./chunk-TO22H2Q6.js";
 import {
   BidiModule
@@ -44,7 +47,6 @@ import {
   NgModule,
   NgZone,
   Renderer2,
-  Service,
   Subject,
   booleanAttribute,
   effect,
@@ -58,53 +60,12 @@ import {
   ɵɵdefineDirective,
   ɵɵdefineInjector,
   ɵɵdefineNgModule,
-  ɵɵdefineService,
   ɵɵdomProperty,
   ɵɵlistener
 } from "./chunk-DTZCFIZQ.js";
 
 // node_modules/@angular/material/fesm2022/_input-value-accessor-chunk.mjs
 var MAT_INPUT_VALUE_ACCESSOR = new InjectionToken("MAT_INPUT_VALUE_ACCESSOR");
-
-// node_modules/@angular/material/fesm2022/_error-options-chunk.mjs
-var ShowOnDirtyErrorStateMatcher = class _ShowOnDirtyErrorStateMatcher {
-  isErrorState(control, form) {
-    return !!(control && control.invalid && (control.dirty || form && form.submitted));
-  }
-  static ɵfac = function ShowOnDirtyErrorStateMatcher_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _ShowOnDirtyErrorStateMatcher)();
-  };
-  static ɵprov = ɵɵdefineService({
-    token: _ShowOnDirtyErrorStateMatcher,
-    factory: _ShowOnDirtyErrorStateMatcher.ɵfac,
-    autoProvided: false
-  });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(ShowOnDirtyErrorStateMatcher, [{
-    type: Service,
-    args: [{
-      autoProvided: false
-    }]
-  }], null, null);
-})();
-var ErrorStateMatcher = class _ErrorStateMatcher {
-  isErrorState(control, form) {
-    return !!(control && control.invalid && (control.touched || form && form.submitted));
-  }
-  static ɵfac = function ErrorStateMatcher_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _ErrorStateMatcher)();
-  };
-  static ɵprov = ɵɵdefineService({
-    token: _ErrorStateMatcher,
-    factory: _ErrorStateMatcher.ɵfac
-  });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(ErrorStateMatcher, [{
-    type: Service
-  }], null, null);
-})();
 
 // node_modules/@angular/material/fesm2022/_error-state-chunk.mjs
 var _ErrorStateTracker = class {

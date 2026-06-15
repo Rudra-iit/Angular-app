@@ -1,5 +1,12 @@
 import { createRequire } from 'module';const require = createRequire(import.meta.url);
 import {
+  AutofillMonitor,
+  TextFieldModule
+} from "./chunk-ATGW6HRZ.js";
+import {
+  ErrorStateMatcher
+} from "./chunk-6XVDVVQU.js";
+import {
   MAT_FORM_FIELD,
   MatError,
   MatFormField,
@@ -9,34 +16,30 @@ import {
   MatLabel,
   MatPrefix,
   MatSuffix
-} from "./chunk-KHXCWOC2.js";
+} from "./chunk-XUSQC6H3.js";
 import {
-  AutofillMonitor,
-  TextFieldModule
-} from "./chunk-ATGW6HRZ.js";
+  _IdGenerator,
+  coerceBooleanProperty,
+  getSupportedInputTypes
+} from "./chunk-S3MWLCZG.js";
+import "./chunk-UBHBQMT3.js";
+import {
+  BidiModule
+} from "./chunk-2CFUSNOR.js";
+import {
+  Platform
+} from "./chunk-WUC3MS53.js";
+import "./chunk-4YFHHFRX.js";
+import "./chunk-7PYWOL5B.js";
+import "./chunk-B7RE2A5G.js";
 import {
   FormGroupDirective,
   NgControl,
   NgForm,
   Validators
 } from "./chunk-LG3YHO6O.js";
-import {
-  _IdGenerator,
-  coerceBooleanProperty,
-  getSupportedInputTypes
-} from "./chunk-2POWQURS.js";
-import "./chunk-UBHBQMT3.js";
-import "./chunk-7PYWOL5B.js";
-import {
-  Platform
-} from "./chunk-WUC3MS53.js";
-import "./chunk-4YFHHFRX.js";
-import "./chunk-B7RE2A5G.js";
 import "./chunk-WAMIVCBV.js";
 import "./chunk-CKKG5TI3.js";
-import {
-  BidiModule
-} from "./chunk-2CFUSNOR.js";
 import {
   Directive,
   ElementRef,
@@ -45,7 +48,6 @@ import {
   NgModule,
   NgZone,
   Renderer2,
-  Service,
   booleanAttribute,
   effect,
   inject,
@@ -60,7 +62,6 @@ import {
   ɵɵdefineDirective,
   ɵɵdefineInjector,
   ɵɵdefineNgModule,
-  ɵɵdefineService,
   ɵɵdomProperty,
   ɵɵlistener
 } from "./chunk-IHZVPIBM.js";
@@ -73,46 +74,6 @@ var import_rxjs = __toESM(require_cjs(), 1);
 
 // node_modules/@angular/material/fesm2022/_input-value-accessor-chunk.mjs
 var MAT_INPUT_VALUE_ACCESSOR = new InjectionToken("MAT_INPUT_VALUE_ACCESSOR");
-
-// node_modules/@angular/material/fesm2022/_error-options-chunk.mjs
-var ShowOnDirtyErrorStateMatcher = class _ShowOnDirtyErrorStateMatcher {
-  isErrorState(control, form) {
-    return !!(control && control.invalid && (control.dirty || form && form.submitted));
-  }
-  static ɵfac = function ShowOnDirtyErrorStateMatcher_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _ShowOnDirtyErrorStateMatcher)();
-  };
-  static ɵprov = ɵɵdefineService({
-    token: _ShowOnDirtyErrorStateMatcher,
-    factory: _ShowOnDirtyErrorStateMatcher.ɵfac,
-    autoProvided: false
-  });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(ShowOnDirtyErrorStateMatcher, [{
-    type: Service,
-    args: [{
-      autoProvided: false
-    }]
-  }], null, null);
-})();
-var ErrorStateMatcher = class _ErrorStateMatcher {
-  isErrorState(control, form) {
-    return !!(control && control.invalid && (control.touched || form && form.submitted));
-  }
-  static ɵfac = function ErrorStateMatcher_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _ErrorStateMatcher)();
-  };
-  static ɵprov = ɵɵdefineService({
-    token: _ErrorStateMatcher,
-    factory: _ErrorStateMatcher.ɵfac
-  });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(ErrorStateMatcher, [{
-    type: Service
-  }], null, null);
-})();
 
 // node_modules/@angular/material/fesm2022/_error-state-chunk.mjs
 var _ErrorStateTracker = class {

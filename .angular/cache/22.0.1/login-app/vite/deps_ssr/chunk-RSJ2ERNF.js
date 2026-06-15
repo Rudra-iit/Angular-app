@@ -1,13 +1,13 @@
 import { createRequire } from 'module';const require = createRequire(import.meta.url);
 import {
-  index
-} from "./chunk-7VO7PY3Q.js";
-import {
   ActivatedRoute,
   ROUTES,
   Router,
   loadChildren
 } from "./chunk-JQMF6RI5.js";
+import {
+  index
+} from "./chunk-7VO7PY3Q.js";
 import {
   BrowserDomAdapter,
   BrowserModule,
@@ -12664,4 +12664,4 @@ export {
   AngularAppEngine,
   createRequestHandler
 };
-//# sourceMappingURL=chunk-3ISO7L7X.js.map
+//# sourceMappingURL=chunk-RSJ2ERNF.js.map

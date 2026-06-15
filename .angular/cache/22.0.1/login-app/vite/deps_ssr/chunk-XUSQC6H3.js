@@ -4,17 +4,17 @@ import {
   _IdGenerator,
   _animationsDisabled,
   coerceBooleanProperty
-} from "./chunk-2POWQURS.js";
+} from "./chunk-S3MWLCZG.js";
+import {
+  BidiModule,
+  Directionality
+} from "./chunk-2CFUSNOR.js";
 import {
   Platform
 } from "./chunk-WUC3MS53.js";
 import {
   NgTemplateOutlet
 } from "./chunk-WAMIVCBV.js";
-import {
-  BidiModule,
-  Directionality
-} from "./chunk-2CFUSNOR.js";
 import {
   ChangeDetectorRef,
   Component,
@@ -1518,4 +1518,4 @@ export {
   MatFormField,
   MatFormFieldModule
 };
-//# sourceMappingURL=chunk-KHXCWOC2.js.map
+//# sourceMappingURL=chunk-XUSQC6H3.js.map
