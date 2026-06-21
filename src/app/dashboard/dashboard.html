@@ -1,0 +1,24 @@
+<div class="dashboard-page">
+  <section class="dashboard-header">
+    <h1>Available Products</h1>
+    <p>Customers can browse the latest products added by the admin.</p>
+  </section>
+
+  <section class="dashboard-products">
+    <p *ngIf="productCount() === 0" class="empty-state">
+      No products are available yet.
+    </p>
+
+    <ul *ngIf="productCount() > 0">
+      <li *ngFor="let product of products()" class="product-card">
+        <img *ngIf="product.imageUrl" [src]="product.imageUrl" alt="{{ product.name }}" />
+        <div class="product-info">
+          <h2>{{ product.name }}</h2>
+          <p class="price">${{ product.price.toFixed(2) }}</p>
+          <p><strong>Quality:</strong> {{ product.quality || 'Not set' }}</p>
+          <p>{{ product.description || 'No description available' }}</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+</div>
