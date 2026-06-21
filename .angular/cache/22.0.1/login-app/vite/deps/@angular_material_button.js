@@ -1,42 +1,34 @@
 import {
-  MAT_RIPPLE_GLOBAL_OPTIONS,
+  MatRippleLoader
+} from "./chunk-6G62P3DB.js";
+import {
   MatRippleModule,
-  RippleRenderer,
-  _StructuralStylesLoader,
-  defaultRippleAnimationConfig
-} from "./chunk-NUBPO2IC.js";
+  _StructuralStylesLoader
+} from "./chunk-X4QC7JO4.js";
 import {
   FocusMonitor,
-  _animationsDisabled,
-  _getEventTarget
-} from "./chunk-7R7U34AW.js";
-import "./chunk-T5SGBVUH.js";
-import "./chunk-VWYQTFN4.js";
-import {
-  Platform
-} from "./chunk-U2W4YTOG.js";
+  _animationsDisabled
+} from "./chunk-HHLQOLT4.js";
+import "./chunk-TU4P7YCL.js";
+import "./chunk-XXDM3JWN.js";
 import {
   _CdkPrivateStyleLoader
-} from "./chunk-Q5UF4LUQ.js";
-import "./chunk-22VCKL3B.js";
-import "./chunk-IE7YWQRS.js";
-import "./chunk-TO22H2Q6.js";
+} from "./chunk-JDG56FJS.js";
+import "./chunk-K3EHEM7D.js";
+import "./chunk-INMG2SCI.js";
+import "./chunk-AN5QIM72.js";
 import {
   BidiModule
-} from "./chunk-W7TU23MG.js";
+} from "./chunk-SUM4JFPP.js";
 import {
   Component,
-  DOCUMENT,
   Directive,
   ElementRef,
   InjectionToken,
-  Injector,
   Input,
   NgModule,
   NgZone,
   Renderer2,
-  RendererFactory2,
-  Service,
   ViewEncapsulation,
   __spreadProps,
   __spreadValues,
@@ -56,134 +48,12 @@ import {
   ɵɵdefineDirective,
   ɵɵdefineInjector,
   ɵɵdefineNgModule,
-  ɵɵdefineService,
   ɵɵdomElement,
   ɵɵdomElementEnd,
   ɵɵdomElementStart,
   ɵɵprojection,
   ɵɵprojectionDef
-} from "./chunk-DTZCFIZQ.js";
-
-// node_modules/@angular/material/fesm2022/_ripple-loader-chunk.mjs
-var eventListenerOptions = {
-  capture: true
-};
-var rippleInteractionEvents = ["focus", "mousedown", "mouseenter", "touchstart"];
-var matRippleUninitialized = "mat-ripple-loader-uninitialized";
-var matRippleClassName = "mat-ripple-loader-class-name";
-var matRippleCentered = "mat-ripple-loader-centered";
-var matRippleDisabled = "mat-ripple-loader-disabled";
-var MatRippleLoader = class _MatRippleLoader {
-  _document = inject(DOCUMENT);
-  _animationsDisabled = _animationsDisabled();
-  _globalRippleOptions = inject(MAT_RIPPLE_GLOBAL_OPTIONS, {
-    optional: true
-  });
-  _platform = inject(Platform);
-  _ngZone = inject(NgZone);
-  _injector = inject(Injector);
-  _eventCleanups;
-  _hosts = /* @__PURE__ */ new Map();
-  constructor() {
-    const renderer = inject(RendererFactory2).createRenderer(null, null);
-    this._eventCleanups = this._ngZone.runOutsideAngular(() => rippleInteractionEvents.map((name) => renderer.listen(this._document, name, this._onInteraction, eventListenerOptions)));
-  }
-  ngOnDestroy() {
-    const hosts = this._hosts.keys();
-    for (const host of hosts) {
-      this.destroyRipple(host);
-    }
-    this._eventCleanups.forEach((cleanup) => cleanup());
-  }
-  configureRipple(host, config) {
-    host.setAttribute(matRippleUninitialized, this._globalRippleOptions?.namespace ?? "");
-    if (config.className || !host.hasAttribute(matRippleClassName)) {
-      host.setAttribute(matRippleClassName, config.className || "");
-    }
-    if (config.centered) {
-      host.setAttribute(matRippleCentered, "");
-    }
-    if (config.disabled) {
-      host.setAttribute(matRippleDisabled, "");
-    }
-  }
-  setDisabled(host, disabled) {
-    const ripple = this._hosts.get(host);
-    if (ripple) {
-      ripple.target.rippleDisabled = disabled;
-      if (!disabled && !ripple.hasSetUpEvents) {
-        ripple.hasSetUpEvents = true;
-        ripple.renderer.setupTriggerEvents(host);
-      }
-    } else if (disabled) {
-      host.setAttribute(matRippleDisabled, "");
-    } else {
-      host.removeAttribute(matRippleDisabled);
-    }
-  }
-  _onInteraction = (event) => {
-    const eventTarget = _getEventTarget(event);
-    if (eventTarget instanceof HTMLElement) {
-      const element = eventTarget.closest(`[${matRippleUninitialized}="${this._globalRippleOptions?.namespace ?? ""}"]`);
-      if (element) {
-        this._createRipple(element);
-      }
-    }
-  };
-  _createRipple(host) {
-    if (!this._document || this._hosts.has(host)) {
-      return;
-    }
-    host.querySelector(".mat-ripple")?.remove();
-    const rippleEl = this._document.createElement("span");
-    rippleEl.classList.add("mat-ripple", host.getAttribute(matRippleClassName));
-    host.append(rippleEl);
-    const globalOptions = this._globalRippleOptions;
-    const enterDuration = this._animationsDisabled ? 0 : globalOptions?.animation?.enterDuration ?? defaultRippleAnimationConfig.enterDuration;
-    const exitDuration = this._animationsDisabled ? 0 : globalOptions?.animation?.exitDuration ?? defaultRippleAnimationConfig.exitDuration;
-    const target = {
-      rippleDisabled: this._animationsDisabled || globalOptions?.disabled || host.hasAttribute(matRippleDisabled),
-      rippleConfig: {
-        centered: host.hasAttribute(matRippleCentered),
-        terminateOnPointerUp: globalOptions?.terminateOnPointerUp,
-        animation: {
-          enterDuration,
-          exitDuration
-        }
-      }
-    };
-    const renderer = new RippleRenderer(target, this._ngZone, rippleEl, this._platform, this._injector);
-    const hasSetUpEvents = !target.rippleDisabled;
-    if (hasSetUpEvents) {
-      renderer.setupTriggerEvents(host);
-    }
-    this._hosts.set(host, {
-      target,
-      renderer,
-      hasSetUpEvents
-    });
-    host.removeAttribute(matRippleUninitialized);
-  }
-  destroyRipple(host) {
-    const ripple = this._hosts.get(host);
-    if (ripple) {
-      ripple.renderer._removeTriggerEvents();
-      this._hosts.delete(host);
-    }
-  }
-  static ɵfac = function MatRippleLoader_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _MatRippleLoader)();
-  };
-  static ɵprov = ɵɵdefineService({
-    token: _MatRippleLoader,
-    factory: _MatRippleLoader.ɵfac
-  });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(MatRippleLoader, [{
-    type: Service
-  }], () => [], null);
-})();
+} from "./chunk-MDXCTSDV.js";
 
 // node_modules/@angular/material/fesm2022/_icon-button-chunk.mjs
 var _c0 = ["*", [["", "progressIndicator", ""]]];

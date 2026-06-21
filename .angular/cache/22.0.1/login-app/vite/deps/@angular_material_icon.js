@@ -8,15 +8,13 @@ import {
   getMatIconFailedToSanitizeUrlError,
   getMatIconNameNotFoundError,
   getMatIconNoHttpProviderError
-} from "./chunk-APOMVMQS.js";
-import "./chunk-T5SGBVUH.js";
-import "./chunk-VWYQTFN4.js";
-import "./chunk-Q5UF4LUQ.js";
-import "./chunk-22VCKL3B.js";
-import "./chunk-IE7YWQRS.js";
-import "./chunk-TO22H2Q6.js";
-import "./chunk-W7TU23MG.js";
-import "./chunk-DTZCFIZQ.js";
+} from "./chunk-N3A54RCF.js";
+import "./chunk-TU4P7YCL.js";
+import "./chunk-XXDM3JWN.js";
+import "./chunk-JDG56FJS.js";
+import "./chunk-AN5QIM72.js";
+import "./chunk-SUM4JFPP.js";
+import "./chunk-MDXCTSDV.js";
 export {
   MAT_ICON_DEFAULT_OPTIONS,
   MAT_ICON_LOCATION,

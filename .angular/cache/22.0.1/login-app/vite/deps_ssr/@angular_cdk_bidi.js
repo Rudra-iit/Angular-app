@@ -4,8 +4,8 @@ import {
   DIR_DOCUMENT,
   Dir,
   Directionality
-} from "./chunk-2CFUSNOR.js";
-import "./chunk-IHZVPIBM.js";
+} from "./chunk-JORVVAFK.js";
+import "./chunk-74B6FSEW.js";
 import "./chunk-6DU2HRTW.js";
 export {
   BidiModule,

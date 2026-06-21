@@ -1,7 +1,7 @@
 import { createRequire } from 'module';const require = createRequire(import.meta.url);
 import {
   BidiModule
-} from "./chunk-2CFUSNOR.js";
+} from "./chunk-JORVVAFK.js";
 import {
   Component,
   Directive,
@@ -20,7 +20,7 @@ import {
   ɵɵdomElementStart,
   ɵɵprojection,
   ɵɵprojectionDef
-} from "./chunk-IHZVPIBM.js";
+} from "./chunk-74B6FSEW.js";
 import "./chunk-6DU2HRTW.js";
 
 // node_modules/@angular/material/fesm2022/card.mjs

@@ -1,12 +1,5 @@
 import { createRequire } from 'module';const require = createRequire(import.meta.url);
 import {
-  AutofillMonitor,
-  TextFieldModule
-} from "./chunk-ATGW6HRZ.js";
-import {
-  ErrorStateMatcher
-} from "./chunk-6XVDVVQU.js";
-import {
   MAT_FORM_FIELD,
   MatError,
   MatFormField,
@@ -16,30 +9,39 @@ import {
   MatLabel,
   MatPrefix,
   MatSuffix
-} from "./chunk-XUSQC6H3.js";
+} from "./chunk-CHV4AZ4Y.js";
 import {
-  _IdGenerator,
-  coerceBooleanProperty,
-  getSupportedInputTypes
-} from "./chunk-S3MWLCZG.js";
-import "./chunk-UBHBQMT3.js";
-import {
-  BidiModule
-} from "./chunk-2CFUSNOR.js";
-import {
-  Platform
-} from "./chunk-WUC3MS53.js";
-import "./chunk-4YFHHFRX.js";
-import "./chunk-7PYWOL5B.js";
-import "./chunk-B7RE2A5G.js";
+  AutofillMonitor,
+  TextFieldModule
+} from "./chunk-4VEJJFVC.js";
 import {
   FormGroupDirective,
   NgControl,
   NgForm,
   Validators
-} from "./chunk-LG3YHO6O.js";
-import "./chunk-WAMIVCBV.js";
-import "./chunk-CKKG5TI3.js";
+} from "./chunk-RYKZKZMC.js";
+import {
+  _ErrorStateTracker
+} from "./chunk-WIPDHPLT.js";
+import {
+  ErrorStateMatcher
+} from "./chunk-VWPIUWSX.js";
+import {
+  _IdGenerator,
+  coerceBooleanProperty,
+  getSupportedInputTypes
+} from "./chunk-7VPNKHOE.js";
+import "./chunk-ZJCXZDVH.js";
+import "./chunk-TV6KADYE.js";
+import "./chunk-T7LNQFGH.js";
+import "./chunk-ACJJXWGN.js";
+import {
+  Platform
+} from "./chunk-O65DETJE.js";
+import {
+  BidiModule
+} from "./chunk-JORVVAFK.js";
+import "./chunk-ZFTFZPG2.js";
 import {
   Directive,
   ElementRef,
@@ -64,7 +66,7 @@ import {
   ɵɵdefineNgModule,
   ɵɵdomProperty,
   ɵɵlistener
-} from "./chunk-IHZVPIBM.js";
+} from "./chunk-74B6FSEW.js";
 import {
   __toESM
 } from "./chunk-6DU2HRTW.js";
@@ -74,35 +76,6 @@ var import_rxjs = __toESM(require_cjs(), 1);
 
 // node_modules/@angular/material/fesm2022/_input-value-accessor-chunk.mjs
 var MAT_INPUT_VALUE_ACCESSOR = new InjectionToken("MAT_INPUT_VALUE_ACCESSOR");
-
-// node_modules/@angular/material/fesm2022/_error-state-chunk.mjs
-var _ErrorStateTracker = class {
-  _defaultMatcher;
-  ngControl;
-  _parentFormGroup;
-  _parentForm;
-  _stateChanges;
-  errorState = false;
-  matcher;
-  constructor(_defaultMatcher, ngControl, _parentFormGroup, _parentForm, _stateChanges) {
-    this._defaultMatcher = _defaultMatcher;
-    this.ngControl = ngControl;
-    this._parentFormGroup = _parentFormGroup;
-    this._parentForm = _parentForm;
-    this._stateChanges = _stateChanges;
-  }
-  updateErrorState() {
-    const oldState = this.errorState;
-    const parent = this._parentFormGroup || this._parentForm;
-    const matcher = this.matcher || this._defaultMatcher;
-    const control = this.ngControl ? this.ngControl.control : null;
-    const newState = matcher?.isErrorState(control, parent) ?? false;
-    if (newState !== oldState) {
-      this.errorState = newState;
-      this._stateChanges.next();
-    }
-  }
-};
 
 // node_modules/@angular/material/fesm2022/input.mjs
 var import_operators = __toESM(require_operators(), 1);

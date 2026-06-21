@@ -7,7 +7,7 @@ import { ForgotPassword } from './forgot-password/forgot-password';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'dashboard',
     pathMatch: 'full',
   },
 

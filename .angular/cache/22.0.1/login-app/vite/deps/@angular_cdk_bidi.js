@@ -3,8 +3,8 @@ import {
   DIR_DOCUMENT,
   Dir,
   Directionality
-} from "./chunk-W7TU23MG.js";
-import "./chunk-DTZCFIZQ.js";
+} from "./chunk-SUM4JFPP.js";
+import "./chunk-MDXCTSDV.js";
 export {
   BidiModule,
   DIR_DOCUMENT,
