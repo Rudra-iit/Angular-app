@@ -1,0 +1,37 @@
+<div class="register-page">
+  <div class="register-card">
+    <h1>Create an account</h1>
+    <p>Register as a customer or admin, then return to login.</p>
+
+    <form [formGroup]="registerForm" (ngSubmit)="submit()" class="register-form">
+      <label>
+        Username
+        <input type="text" formControlName="username" placeholder="Enter your username" />
+      </label>
+
+      <label>
+        Password
+        <input type="password" formControlName="password" placeholder="Enter your password" />
+      </label>
+
+      <fieldset class="role-fieldset">
+        <legend>Register as</legend>
+        <label>
+          <input type="radio" formControlName="role" value="customer" />
+          Customer
+        </label>
+        <label>
+          <input type="radio" formControlName="role" value="admin" />
+          Admin
+        </label>
+      </fieldset>
+
+      <div class="form-actions">
+        <button type="submit">Register</button>
+        <a routerLink="/login" class="secondary">Back to login</a>
+      </div>
+
+      <p class="error-message" *ngIf="error()">{{ error() }}</p>
+    </form>
+  </div>
+</div>

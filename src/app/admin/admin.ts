@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 import { Product, ProductStore } from '../services/product-store.service';
 
 @Component({
@@ -12,6 +14,8 @@ import { Product, ProductStore } from '../services/product-store.service';
 export class Admin {
   protected readonly fb = inject(FormBuilder);
   protected readonly productStore = inject(ProductStore);
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
 
   protected readonly productForm = this.fb.group({
     name: ['', Validators.required],
@@ -89,5 +93,10 @@ export class Admin {
     if (this.selectedProductId() === product.id) {
       this.resetForm();
     }
+  }
+
+  protected logout(): void {
+    this.authService.logout();
+    this.router.navigateByUrl('/login');
   }
 }

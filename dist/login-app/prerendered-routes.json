@@ -2,6 +2,7 @@
   "routes": {
     "/": {},
     "/admin": {},
-    "/dashboard": {}
+    "/dashboard": {},
+    "/login": {}
   }
 }

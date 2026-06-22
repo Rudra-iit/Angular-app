@@ -16,15 +16,20 @@ export default {
   },
   {
     "renderMode": 2,
+    "route": "/login"
+  },
+  {
+    "renderMode": 2,
     "route": "/admin"
   }
 ],
   entryPointToBrowserMapping: undefined,
   assets: {
-    'index.csr.html': {size: 24637, hash: '4f73bcace3234fd6d74cf6315cf4a3f6aac65f07514fc9fa43284a26c3eba62a', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
-    'index.server.html': {size: 17153, hash: '57e922dcc9067419b3ff794712e3cba8172815cdd2ab6f21b6b82b31b3ae85cd', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
-    'admin/index.html': {size: 31972, hash: '935033e2bfc83e5791b8f23876c8d761201c74164ef8254a87df83735e617504', text: () => import('./assets-chunks/admin_index_html.mjs').then(m => m.default)},
-    'dashboard/index.html': {size: 26892, hash: '8d88261644bdc76acfdf86fd4ba0edec6628df56e3e37bb791369c859be08fe0', text: () => import('./assets-chunks/dashboard_index_html.mjs').then(m => m.default)},
+    'index.csr.html': {size: 24637, hash: 'ef2261883048ca3b091ec3186110a8e15bf41355f641c200eb67549302e05a9e', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
+    'index.server.html': {size: 17153, hash: '11d1bd674f2a8a6cf6f7ac923b3a932bb660d8a60dd3187ab9d24b22074fe570', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
+    'admin/index.html': {size: 240, hash: 'db096474d521163c4f5fb7d700305222bcea1012b38583442ad232da75e59192', text: () => import('./assets-chunks/admin_index_html.mjs').then(m => m.default)},
+    'login/index.html': {size: 30569, hash: '969a2295946bc4fa30ae07faeb647cd7af21aa4fdba965154c38ceafdc4d7fd3', text: () => import('./assets-chunks/login_index_html.mjs').then(m => m.default)},
+    'dashboard/index.html': {size: 27953, hash: '3ff4c6f59b31492e0264591223dc37ead5260aa8b8a253321c2fb766c8a31053', text: () => import('./assets-chunks/dashboard_index_html.mjs').then(m => m.default)},
     'styles-OPUTW5UJ.css': {size: 8043, hash: 'i68XcmjPijU', text: () => import('./assets-chunks/styles-OPUTW5UJ_css.mjs').then(m => m.default)}
   },
 };

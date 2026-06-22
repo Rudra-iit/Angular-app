@@ -1,24 +1,67 @@
-<div class="dashboard-page">
-  <section class="dashboard-header">
-    <h1>Available Products</h1>
-    <p>Customers can browse the latest products added by the admin.</p>
-  </section>
+<div class="dashboard-layout">
+  <aside class="dashboard-sidebar" [class.collapsed]="isSidebarCollapsed()">
+    <div class="sidebar-header">
+      <button
+        type="button"
+        class="sidebar-toggle"
+        (click)="toggleSidebar()"
+        [attr.aria-expanded]="!isSidebarCollapsed()"
+      >
+        {{ isSidebarCollapsed() ? '☰' : 'X' }}
+      </button>
+    </div>
 
-  <section class="dashboard-products">
-    <p *ngIf="productCount() === 0" class="empty-state">
-      No products are available yet.
-    </p>
+    <nav class="sidebar-nav" *ngIf="!isSidebarCollapsed()">
+      <a routerLink="/login">Login</a>
+      <a routerLink="/register">Register</a>
+      <a routerLink="/admin">Admin</a>
+      <p>
+        Contact us: dhakatechs@gmail.com
+        <br />
+        Call us: +1 (555) 123-4567
+        <br />
+        Follow us on Twitter: <a href="https://twitter.com/dhakatechs" target="_blank">@dhakatechs</a>
+      </p>
+    </nav>
+  </aside>
 
-    <ul *ngIf="productCount() > 0">
-      <li *ngFor="let product of products()" class="product-card">
-        <img *ngIf="product.imageUrl" [src]="product.imageUrl" alt="{{ product.name }}" />
-        <div class="product-info">
-          <h2>{{ product.name }}</h2>
-          <p class="price">${{ product.price.toFixed(2) }}</p>
-          <p><strong>Quality:</strong> {{ product.quality || 'Not set' }}</p>
-          <p>{{ product.description || 'No description available' }}</p>
-        </div>
-      </li>
-    </ul>
-  </section>
+  <main class="main-content">
+    <section class="dashboard-header">
+      <h1>Available Products</h1>
+    </section>
+
+    <section class="dashboard-search">
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        placeholder="Search products..."
+        class="search-input"
+      />
+    </section>
+
+    <section class="dashboard-products">
+      <p *ngIf="productCount() === 0" class="empty-state">
+        No products are available yet.
+      </p>
+
+      <ul style="list-style-type: none;" *ngIf="productCount() > 0" class="product-grid">
+        <li *ngFor="let product of filteredProducts()" class="product-card">
+          <div class="product-panel">
+            <img *ngIf="product.imageUrl" [src]="product.imageUrl" [alt]="product.name" />
+            <div class="product-info">
+              <h2>{{ product.name }}</h2>
+              <p class="price">${{ product.price.toFixed(2) }}</p>
+              <p><strong>Quality:</strong> {{ product.quality || 'Not set' }}</p>
+              <p>{{ product.description || 'No description available' }}</p>
+            </div>
+            <button type="button" class="add-to-cart" (click)="addToCart(product.id)">
+              <a routerLink="/cart" style="color: blue; text-decoration: none;">
+                Add to cart
+              </a>
+            </button>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
 </div>
