@@ -17,6 +17,9 @@ export class Dashboard {
   protected readonly products = this.productStore.products;
   protected readonly categoryPanels = signal<Record<string, boolean>>({});
 
+  // Grid layout for product cards
+  gridTemplateColumns = 'repeat(auto-fit, minmax(260px, 1fr))';
+
   // 🔍 Search term
   searchTerm = signal<string>('');
 

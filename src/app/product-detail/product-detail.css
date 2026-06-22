@@ -20,8 +20,8 @@
 
 .product-detail-header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 1rem;
   margin-bottom: 1.5rem;
 }
@@ -58,6 +58,57 @@
 .product-detail-info {
   display: grid;
   gap: 1rem;
+}
+
+.button-stack {
+  display: grid;
+  gap: 1rem;
+  width: 100%;
+}
+
+.buy-now-panel {
+  display: grid;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.buy-now-panel label {
+  display: grid;
+  gap: 0.35rem;
+  font-weight: 600;
+  color: #1a3045;
+}
+
+.buy-now-panel input {
+  width: 100%;
+  border: 1px solid #cbd7e5;
+  border-radius: 0.75rem;
+  padding: 0.85rem 1rem;
+  font: inherit;
+}
+
+.buy-now {
+  border: none;
+  border-radius: 0.85rem;
+  padding: 0.85rem 1.2rem;
+  background: #2a8a2a;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.error-message,
+.success-message {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.error-message {
+  color: #d13232;
+}
+
+.success-message {
+  color: #0e4c92;
 }
 
 .product-detail-info .price {

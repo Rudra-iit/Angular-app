@@ -90,6 +90,11 @@
                     View details
                   </a>
                 </button>
+                <button type="button" class="buy-now" [routerLink]="['/product', product.id]" [queryParams]="{ buy: true }">
+                  <a style="color: blue; text-decoration: none;">
+                    Buy now
+                  </a>
+                </button>
                 <button type="button" class="add-to-cart" (click)="addToCart(product.id)">
                   <a routerLink="/cart" style="color: blue; text-decoration: none;">
                     Add to cart
