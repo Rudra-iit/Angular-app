@@ -10,6 +10,19 @@
           <h1>{{ currentProduct.name }}</h1>
           <p class="category-label">{{ currentProduct.category || 'Uncategorized' }}</p>
         </div>
+
+      <div class="product-detail-body">
+
+        <img *ngIf="currentProduct.imageUrl" [src]="currentProduct.imageUrl" [alt]="currentProduct.name" />
+
+        <div class="product-detail-info">
+          <p class="price">${{ currentProduct.price.toFixed(2) }}</p>
+          <p><strong>Quality:</strong> {{ currentProduct.quality || 'Not set' }}</p>
+          <p><strong>Description:</strong> {{ currentProduct.description || 'No description available' }}</p>
+          <p><strong>Details:</strong></p>
+          <p class="details-text">{{ currentProduct.details || 'No additional details available.' }}</p>
+        </div>
+
         <div class="button-stack">
           <button type="button" class="add-to-cart" (click)="addToCart(currentProduct.id)">
             Add to cart
@@ -33,16 +46,6 @@
         </div>
       </div>
 
-      <div class="product-detail-body">
-        <img *ngIf="currentProduct.imageUrl" [src]="currentProduct.imageUrl" [alt]="currentProduct.name" />
-
-        <div class="product-detail-info">
-          <p class="price">${{ currentProduct.price.toFixed(2) }}</p>
-          <p><strong>Quality:</strong> {{ currentProduct.quality || 'Not set' }}</p>
-          <p><strong>Description:</strong> {{ currentProduct.description || 'No description available' }}</p>
-          <p><strong>Details:</strong></p>
-          <p class="details-text">{{ currentProduct.details || 'No additional details available.' }}</p>
-        </div>
       </div>
     </section>
   </ng-container>

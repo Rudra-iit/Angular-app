@@ -15,13 +15,16 @@
 .dashboard-layout {
   display: flex;
   min-height: 100vh;
+  background: url("image.jpg") no-repeat center center;
+  background-size: cover;
 }
 
 .dashboard-sidebar {
   width: 180px;
   flex-shrink: 0;
-  background: #f7faff;
+  background: #262e3c;
   border-right: 1px solid #d8e1ed;
+  color: #fff;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -96,7 +99,7 @@
 
 .sidebar-toggle {
   border: none;
-  background: #0e4c92;
+  background: #0c64c8;
   color: #fff;
   padding: 0.45rem 0.75rem;
   border-radius: 999px;
@@ -130,7 +133,7 @@
 
 .sidebar-nav a:hover,
 .sidebar-nav a:focus-visible {
-  background: #e8f1ff;
+  background: #1d2c43;
   border-color: #bfd3ff;
 }
 
@@ -153,16 +156,16 @@
 
 .category-panel {
   margin-bottom: 1.25rem;
-  border: 1px solid #d8e1ed;
+  border: 1px solid #868686;
   border-radius: 1rem;
   overflow: hidden;
-  background: #ffffff;
+  background: #fff;
 }
 
 .category-header {
   width: 100%;
   border: none;
-  background: #f3f7ff;
+  background: #99bbff;
   color: #102a43;
   padding: 1rem 1.25rem;
   display: flex;
@@ -176,13 +179,13 @@
 
 .category-header:hover,
 .category-header:focus-visible {
-  background: #dde8ff;
+  background: #58abff;
   outline: 2px solid #94b4ff;
   outline-offset: -2px;
 }
 
 .category-badge {
-  background: #0e4c92;
+  background: #900e92;
   color: #ffffff;
   border-radius: 999px;
   padding: 0.25rem 0.75rem;
@@ -190,13 +193,25 @@
 }
 
 .product-grid {
+  width: 1300px;
+  height: 500px;
+  color: #000000;
   list-style: none;
   margin: 0;
   padding: 1rem 1.25rem 1.5rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 1rem;
   align-items: start;
+  overflow: auto;
+  background: #f0f0f0;
+}
+
+.product-panel {
+  background: #fff;
+  border: 1px solid #35383c;
+  border-radius: 1rem;
+  padding: 1rem;
 }
 
 .empty-state {
