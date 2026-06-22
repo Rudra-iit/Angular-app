@@ -5,6 +5,7 @@ export interface Product {
   name: string;
   description: string;
   quality: string;
+  category: string;
   price: number;
   imageUrl: string;
 }
@@ -28,7 +29,11 @@ export class ProductStore {
     }
 
     try {
-      return JSON.parse(stored) as Product[];
+      const products = JSON.parse(stored) as Product[];
+      return products.map((product) => ({
+        ...product,
+        category: product.category || 'Uncategorized',
+      }));
     } catch {
       return [];
     }

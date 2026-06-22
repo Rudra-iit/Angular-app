@@ -21,6 +21,7 @@ export class Admin {
     name: ['', Validators.required],
     description: [''],
     quality: [''],
+    category: [''],
     price: [0, [Validators.required, Validators.min(0)]],
     imageUrl: [''],
   });
@@ -43,6 +44,7 @@ export class Admin {
       name: string;
       description: string;
       quality: string;
+      category: string;
       price: number;
       imageUrl: string;
     };
@@ -53,6 +55,7 @@ export class Admin {
       name: raw.name.trim(),
       description: raw.description.trim(),
       quality: raw.quality.trim(),
+      category: raw.category.trim(),
       price: Number(raw.price),
       imageUrl: raw.imageUrl.trim(),
     };
@@ -72,6 +75,7 @@ export class Admin {
       name: product.name,
       description: product.description,
       quality: product.quality,
+      category: product.category,
       price: product.price,
       imageUrl: product.imageUrl,
     });
@@ -83,6 +87,7 @@ export class Admin {
       name: '',
       description: '',
       quality: '',
+      category: '',
       price: 0,
       imageUrl: '',
     });

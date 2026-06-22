@@ -22,6 +22,11 @@
       </label>
 
       <label>
+        Category
+        <input formControlName="category" placeholder="Example: Electronics, Apparel, Home" />
+      </label>
+
+      <label>
         Price
         <input type="number" formControlName="price" min="0" step="0.01" />
       </label>
@@ -73,6 +78,7 @@
         <div class="product-details">
           <h3>{{ product.name }}</h3>
           <p class="price">${{ product.price.toFixed(2) }}</p>
+          <p><strong>Category:</strong> {{ product.category || 'Uncategorized' }}</p>
           <p><strong>Quality:</strong> {{ product.quality || 'Not set' }}</p>
           <p>{{ product.description || 'No description provided' }}</p>
         </div>

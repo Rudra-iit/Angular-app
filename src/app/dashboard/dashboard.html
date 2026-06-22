@@ -31,12 +31,22 @@
     </section>
 
     <section class="dashboard-search">
-      <input
-        type="text"
-        [(ngModel)]="searchTerm"
-        placeholder="Search products..."
-        class="search-input"
-      />
+      <div class="search-row">
+        <input
+          type="text"
+          [(ngModel)]="searchTerm"
+          placeholder="Search products..."
+          class="search-input"
+        />
+        <label class="search-select">
+          <span class="visually-hidden">Select category</span>
+          <select [(ngModel)]="selectedCategory" aria-label="Filter by category">
+            <option *ngFor="let category of categories()" [value]="category">
+              {{ category }}
+            </option>
+          </select>
+        </label>
+      </div>
     </section>
 
     <section class="dashboard-products">
@@ -44,24 +54,52 @@
         No products are available yet.
       </p>
 
-      <ul style="list-style-type: none;" *ngIf="productCount() > 0" class="product-grid">
-        <li *ngFor="let product of filteredProducts()" class="product-card">
-          <div class="product-panel">
-            <img *ngIf="product.imageUrl" [src]="product.imageUrl" [alt]="product.name" />
-            <div class="product-info">
-              <h2>{{ product.name }}</h2>
-              <p class="price">${{ product.price.toFixed(2) }}</p>
-              <p><strong>Quality:</strong> {{ product.quality || 'Not set' }}</p>
-              <p>{{ product.description || 'No description available' }}</p>
-            </div>
-            <button type="button" class="add-to-cart" (click)="addToCart(product.id)">
-              <a routerLink="/cart" style="color: blue; text-decoration: none;">
-                Add to cart
-              </a>
-            </button>
-          </div>
-        </li>
-      </ul>
+      <ng-container *ngIf="productCount() > 0">
+        <p *ngIf="groupedProducts().length === 0" class="empty-state">
+          No products match your search or quality filter.
+        </p>
+
+        <div *ngFor="let group of groupedProducts()" class="category-panel">
+          <button
+            type="button"
+            class="category-header"
+            (click)="toggleCategory(group.category)"
+            [attr.aria-expanded]="isCategoryOpen(group.category)"
+          >
+            <span>{{ group.category }}</span>
+            <span class="category-badge">{{ group.products.length }}</span>
+            <span>{{ isCategoryOpen(group.category) ? '▾' : '▸' }}</span>
+          </button>
+
+          <ul
+            *ngIf="isCategoryOpen(group.category)"
+            class="product-grid"
+          >
+            <li *ngFor="let product of group.products" class="product-card">
+              <div class="product-panel">
+                <img *ngIf="product.imageUrl" [src]="product.imageUrl" [alt]="product.name" />
+                <div class="product-info">
+                  <h2>{{ product.name }}</h2>
+                  <p class="price">${{ product.price.toFixed(2) }}</p>
+                  <p><strong>Category:</strong> {{ product.category || 'Uncategorized' }}</p>
+                  <p><strong>Quality:</strong> {{ product.quality || 'Not set' }}</p>
+                  <p>{{ product.description || 'No description available' }}</p>
+                </div>
+                <button type="button" class="view-details">
+                  <a [routerLink]="['/product', product.id]" style="color: blue; text-decoration: none;">
+                    View details
+                  </a>
+                </button>
+                <button type="button" class="add-to-cart" (click)="addToCart(product.id)">
+                  <a routerLink="/cart" style="color: blue; text-decoration: none;">
+                    Add to cart
+                  </a>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </ng-container>
     </section>
   </main>
 </div>
