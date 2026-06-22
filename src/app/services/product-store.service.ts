@@ -4,6 +4,7 @@ export interface Product {
   id: string;
   name: string;
   description: string;
+  details: string;
   quality: string;
   category: string;
   price: number;
@@ -33,6 +34,7 @@ export class ProductStore {
       return products.map((product) => ({
         ...product,
         category: product.category || 'Uncategorized',
+        details: product.details || '',
       }));
     } catch {
       return [];

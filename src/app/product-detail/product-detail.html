@@ -1,0 +1,35 @@
+<div class="product-detail-page">
+  <section class="breadcrumb">
+    <a routerLink="/dashboard">← Back to products</a>
+  </section>
+
+  <ng-container *ngIf="product() as currentProduct; else missingProduct">
+    <section class="product-detail-card">
+      <div class="product-detail-header">
+        <div>
+          <h1>{{ currentProduct.name }}</h1>
+          <p class="category-label">{{ currentProduct.category || 'Uncategorized' }}</p>
+        </div>
+        <button type="button" class="add-to-cart" (click)="addToCart(currentProduct.id)">
+          Add to cart
+        </button>
+      </div>
+
+      <div class="product-detail-body">
+        <img *ngIf="currentProduct.imageUrl" [src]="currentProduct.imageUrl" [alt]="currentProduct.name" />
+
+        <div class="product-detail-info">
+          <p class="price">${{ currentProduct.price.toFixed(2) }}</p>
+          <p><strong>Quality:</strong> {{ currentProduct.quality || 'Not set' }}</p>
+          <p><strong>Description:</strong> {{ currentProduct.description || 'No description available' }}</p>
+          <p><strong>Details:</strong></p>
+          <p class="details-text">{{ currentProduct.details || 'No additional details available.' }}</p>
+        </div>
+      </div>
+    </section>
+  </ng-container>
+
+  <ng-template #missingProduct>
+    <p class="missing-product">Product not found. Return to the dashboard to choose another item.</p>
+  </ng-template>
+</div>

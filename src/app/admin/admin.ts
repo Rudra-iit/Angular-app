@@ -20,6 +20,7 @@ export class Admin {
   protected readonly productForm = this.fb.group({
     name: ['', Validators.required],
     description: [''],
+    details: [''],
     quality: [''],
     category: [''],
     price: [0, [Validators.required, Validators.min(0)]],
@@ -43,6 +44,7 @@ export class Admin {
     const raw = this.productForm.value as {
       name: string;
       description: string;
+      details: string;
       quality: string;
       category: string;
       price: number;
@@ -54,6 +56,7 @@ export class Admin {
         this.selectedProductId() ?? `${Date.now()}-${Math.random()}`.replace(/\D/g, ''),
       name: raw.name.trim(),
       description: raw.description.trim(),
+      details: raw.details.trim(),
       quality: raw.quality.trim(),
       category: raw.category.trim(),
       price: Number(raw.price),
@@ -74,6 +77,7 @@ export class Admin {
     this.productForm.setValue({
       name: product.name,
       description: product.description,
+      details: product.details,
       quality: product.quality,
       category: product.category,
       price: product.price,
@@ -86,6 +90,7 @@ export class Admin {
     this.productForm.reset({
       name: '',
       description: '',
+      details: '',
       quality: '',
       category: '',
       price: 0,
