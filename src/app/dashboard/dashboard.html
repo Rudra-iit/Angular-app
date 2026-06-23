@@ -1,53 +1,20 @@
 <div class="dashboard-layout">
-  <aside class="dashboard-sidebar" [class.collapsed]="isSidebarCollapsed()">
-    <div class="sidebar-header">
-      <button
-        type="button"
-        class="sidebar-toggle"
-        (click)="toggleSidebar()"
-        [attr.aria-expanded]="!isSidebarCollapsed()"
-      >
-        {{ isSidebarCollapsed() ? '☰' : 'X' }}
-      </button>
-    </div>
-
-    <nav class="sidebar-nav" *ngIf="!isSidebarCollapsed()">
-      <a routerLink="/login">Login</a>
-      <a routerLink="/register">Register</a>
-      <a routerLink="/admin">Admin</a>
-      <p>
-        Contact us: dhakatechs@gmail.com
-        <br />
-        Call us: +1 (555) 123-4567
-        <br />
-        Follow us on Twitter: <a href="https://twitter.com/dhakatechs" target="_blank">@dhakatechs</a>
-      </p>
-    </nav>
-  </aside>
-
   <main class="main-content">
-    <section class="dashboard-header">
-      <h1>Available Products</h1>
-    </section>
-
-    <section class="dashboard-search">
-      <div class="search-row">
-        <input
-          type="text"
-          [(ngModel)]="searchTerm"
-          placeholder="Search products..."
-          class="search-input"
-        />
-        <label class="search-select">
-          <span class="visually-hidden">Select category</span>
-          <select [(ngModel)]="selectedCategory" aria-label="Filter by category">
-            <option *ngFor="let category of categories()" [value]="category">
-              {{ category }}
-            </option>
-          </select>
-        </label>
-      </div>
-    </section>
+    <header style="background-color: rgb(239, 55, 22);" class="dashboard-header">
+      <section style="color: aliceblue;" class="dashboard-header">
+        <h1>Ecommerce</h1>
+      </section>
+      <section class="dashboard-search">
+        <div class="search-row">
+          <input
+            type="text"
+            [(ngModel)]="searchTerm"
+            placeholder="Search products..."
+            class="search-input"
+          />
+        </div>
+      </section>
+    </header>
 
     <section class="dashboard-products">
       <p *ngIf="productCount() === 0" class="empty-state">
