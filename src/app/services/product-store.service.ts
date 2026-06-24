@@ -1,6 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 
 export interface Product {
+  warranty: string | null;
   id: string;
   name: string;
   description: string;
@@ -9,6 +10,8 @@ export interface Product {
   category: string;
   price: number;
   imageUrl: string;
+  rating?: number;
+  ratingCount?: number;
 }
 
 const PRODUCTS_STORAGE_KEY = 'login-app-products';
@@ -35,6 +38,8 @@ export class ProductStore {
         ...product,
         category: product.category || 'Uncategorized',
         details: product.details || '',
+        rating: product.rating ?? 0,
+        ratingCount: product.ratingCount ?? 0,
       }));
     } catch {
       return [];

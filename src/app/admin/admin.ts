@@ -25,6 +25,7 @@ export class Admin {
     category: [''],
     price: [0, [Validators.required, Validators.min(0)]],
     imageUrl: [''],
+    warranty: [''],
   });
 
   protected readonly products = this.productStore.products;
@@ -49,6 +50,7 @@ export class Admin {
       category: string;
       price: number;
       imageUrl: string;
+      warranty: string;
     };
 
     const product: Product = {
@@ -61,6 +63,7 @@ export class Admin {
       category: raw.category.trim(),
       price: Number(raw.price),
       imageUrl: raw.imageUrl.trim(),
+      warranty: raw.warranty.trim(),
     };
 
     if (this.selectedProductId()) {
@@ -82,6 +85,7 @@ export class Admin {
       category: product.category,
       price: product.price,
       imageUrl: product.imageUrl,
+      warranty: product.warranty,
     });
   }
 
@@ -95,6 +99,7 @@ export class Admin {
       category: '',
       price: 0,
       imageUrl: '',
+      warranty: '',
     });
   }
 

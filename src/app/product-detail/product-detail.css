@@ -48,7 +48,7 @@
 }
 
 .product-detail-body img {
-  width: 100%;
+  width: 80%;
   border-radius: 1rem;
   object-fit: cover;
   min-height: 260px;
@@ -63,23 +63,23 @@
 .button-stack {
   display: grid;
   gap: 1rem;
-  width: 100%;
 }
 
 .buy-now-panel {
   display: grid;
   gap: 0.75rem;
-  width: 100%;
 }
 
-.buy-now-panel label {
+.buy-now-panel label,
+.rating-panel label {
   display: grid;
   gap: 0.35rem;
   font-weight: 600;
   color: #1a3045;
 }
 
-.buy-now-panel input {
+.buy-now-panel input,
+.rating-panel select {
   width: 100%;
   border: 1px solid #cbd7e5;
   border-radius: 0.75rem;
@@ -87,7 +87,8 @@
   font: inherit;
 }
 
-.buy-now {
+.buy-now,
+.rating-submit {
   border: none;
   border-radius: 0.85rem;
   padding: 0.85rem 1.2rem;
@@ -116,6 +117,21 @@
   font-weight: 700;
   color: #0e4c92;
   margin: 0;
+}
+
+.rating-panel {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.rating-panel h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.rating-summary {
+  margin: 0;
+  color: #47627d;
 }
 
 .details-text {

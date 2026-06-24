@@ -24,6 +24,9 @@ export const routes: Routes = [
   {
     path: 'product/:id',
     component: ProductDetail,
+    data: {
+      prerender: false,
+    },
   },
   {
     path: 'login',

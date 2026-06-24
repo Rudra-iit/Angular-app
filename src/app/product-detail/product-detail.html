@@ -21,10 +21,17 @@
           <p><strong>Description:</strong> {{ currentProduct.description || 'No description available' }}</p>
           <p><strong>Details:</strong></p>
           <p class="details-text">{{ currentProduct.details || 'No additional details available.' }}</p>
+          @if (currentProduct.warranty) {
+            <p><strong>Warranty:</strong> {{ currentProduct.warranty }}</p>
+          }
+          <p><strong>Customer rating:</strong> {{ currentProduct.rating ? (currentProduct.rating | number:'1.1-1') : 'Not yet rated' }}</p>
+          <p *ngIf="currentProduct.ratingCount && currentProduct.ratingCount > 0" class="rating-summary">
+            Based on {{ currentProduct.ratingCount }} review{{ currentProduct.ratingCount === 1 ? '' : 's' }}.
+          </p>
         </div>
 
         <div class="button-stack">
-          <button type="button" class="add-to-cart" (click)="addToCart(currentProduct.id)">
+          <button style="width: 50%;" type="button" class="add-to-cart" (click)="addToCart(currentProduct.id)">
             Add to cart
           </button>
           <div class="buy-now-panel">
@@ -37,11 +44,31 @@
                 aria-label="Phone number for purchase"
               />
             </label>
-            <button type="button" class="buy-now" (click)="buyNow(currentProduct.id)">
+            <button style="width: 50%;" type="button" class="buy-now" (click)="buyNow(currentProduct.id)">
               Buy now
             </button>
             <p *ngIf="purchaseError()" class="error-message">{{ purchaseError() }}</p>
             <p *ngIf="purchaseMessage()" class="success-message">{{ purchaseMessage() }}</p>
+          </div>
+
+          <div class="rating-panel" *ngIf="canRate()">
+            <h2>Rate this product</h2>
+            <label>
+              Your rating
+              <select [ngModel]="ratingInput()" (ngModelChange)="ratingInput.set($event)" aria-label="Select a rating">
+                <option [ngValue]="null" disabled selected>Select a star rating</option>
+                <option [ngValue]="5">5 stars</option>
+                <option [ngValue]="4">4 stars</option>
+                <option [ngValue]="3">3 stars</option>
+                <option [ngValue]="2">2 stars</option>
+                <option [ngValue]="1">1 star</option>
+              </select>
+            </label>
+            <button style="width: 50%;" type="button" class="rating-submit" (click)="submitRating()">
+              Submit rating
+            </button>
+            <p *ngIf="ratingError()" class="error-message">{{ ratingError() }}</p>
+            <p *ngIf="ratingMessage()" class="success-message">{{ ratingMessage() }}</p>
           </div>
         </div>
       </div>

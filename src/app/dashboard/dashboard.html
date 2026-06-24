@@ -1,18 +1,16 @@
 <div class="dashboard-layout">
   <main class="main-content">
-    <header style="background-color: rgb(239, 55, 22);" class="dashboard-header">
+    <header style="background-color: rgb(239, 55, 22); display: block; width: 100%;" class="dashboard-header">
       <section style="color: aliceblue;" class="dashboard-header">
-        <h1>Ecommerce</h1>
-      </section>
-      <section class="dashboard-search">
-        <div class="search-row">
+        <a class="search-row">
+          <p>Ecommerce</p>
           <input
             type="text"
             [(ngModel)]="searchTerm"
             placeholder="Search products..."
             class="search-input"
           />
-        </div>
+        </a>
       </section>
     </header>
 
