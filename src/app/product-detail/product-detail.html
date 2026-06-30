@@ -24,13 +24,6 @@
           @if (currentProduct.warranty) {
             <p><strong>Warranty:</strong> {{ currentProduct.warranty }}</p>
           }
-          <p><strong>Customer rating:</strong> {{ currentProduct.rating ? (currentProduct.rating | number:'1.1-1') : 'Not yet rated' }}</p>
-          <p *ngIf="currentProduct.ratingCount && currentProduct.ratingCount > 0" class="rating-summary">
-            Based on {{ currentProduct.ratingCount }} review{{ currentProduct.ratingCount === 1 ? '' : 's' }}.
-          </p>
-        </div>
-
-        <div class="button-stack">
           <button style="width: 50%;" type="button" class="add-to-cart" (click)="addToCart(currentProduct.id)">
             Add to cart
           </button>
@@ -50,6 +43,13 @@
             <p *ngIf="purchaseError()" class="error-message">{{ purchaseError() }}</p>
             <p *ngIf="purchaseMessage()" class="success-message">{{ purchaseMessage() }}</p>
           </div>
+          <p><strong>Customer rating:</strong> {{ currentProduct.rating ? (currentProduct.rating | number:'1.1-1') : 'Not yet rated' }}</p>
+          <p *ngIf="currentProduct.ratingCount && currentProduct.ratingCount > 0" class="rating-summary">
+            Based on {{ currentProduct.ratingCount }} review{{ currentProduct.ratingCount === 1 ? '' : 's' }}.
+          </p>
+        </div>
+
+        <div class="button-stack">
 
           <div class="rating-panel" *ngIf="canRate()">
             <h2>Rate this product</h2>

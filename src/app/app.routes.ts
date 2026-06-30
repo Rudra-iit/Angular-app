@@ -6,6 +6,7 @@ import { Login } from './login/login';
 import { ProductDetail } from './product-detail/product-detail';
 import { Register } from './register/register';
 import { AuthGuard } from './services/auth.guard';
+import { Contact } from './contact/contact';
 
 export const routes: Routes = [
   {
@@ -40,5 +41,9 @@ export const routes: Routes = [
     path: 'admin',
     component: Admin,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'contact',
+    component: Contact,
   },
 ];
