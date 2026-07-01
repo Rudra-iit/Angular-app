@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CartStore } from '../services/cart-store.service';
 import { Product, ProductStore } from '../services/product-store.service';
 import { FormsModule } from '@angular/forms';
@@ -17,6 +17,7 @@ export class ProductDetail {
   protected readonly cartStore = inject(CartStore);
   protected readonly authService = inject(AuthService);
   private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
 
   protected readonly productId = signal<string | null>(null);
   protected readonly buyMode = signal<boolean>(false);
@@ -47,10 +48,20 @@ export class ProductDetail {
   }
 
   protected addToCart(productId: string): void {
+    if (!this.authService.isLoggedIn() || this.authService.user()?.role !== 'customer') {
+      this.router.navigate(['/login']);
+      return;
+    }
+
     this.cartStore.add(productId);
   }
 
   protected buyNow(productId: string): void {
+    if (!this.authService.isLoggedIn() || this.authService.user()?.role !== 'customer') {
+      this.router.navigate(['/login']);
+      return;
+    }
+
     const phone = this.buyerPhone().trim();
     if (!phone) {
       this.purchaseError.set('Please enter a phone number to complete the purchase.');

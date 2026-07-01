@@ -1,12 +1,13 @@
 import { Routes } from '@angular/router';
 import { Admin } from './admin/admin';
 import { Cart } from './cart/cart';
+import { Category } from './category/category';
+import { Contact } from './contact/contact';
 import { Dashboard } from './dashboard/dashboard';
 import { Login } from './login/login';
 import { ProductDetail } from './product-detail/product-detail';
 import { Register } from './register/register';
 import { AuthGuard } from './services/auth.guard';
-import { Contact } from './contact/contact';
 
 export const routes: Routes = [
   {
@@ -21,6 +22,10 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: Dashboard,
+  },
+  {
+    path: 'category',
+    component: Category,
   },
   {
     path: 'product/:id',

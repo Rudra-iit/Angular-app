@@ -1,75 +1,58 @@
 <div class="dashboard-layout">
   <main class="main-content">
-    <header style="background-color: rgb(239, 55, 22); display: block; width: 100%;" class="dashboard-header">
-      <section style="color: aliceblue;" class="dashboard-header">
-        <a class="search-row">
-          <p>Ecommerce</p>
-          <input
-            type="text"
-            [(ngModel)]="searchTerm"
-            placeholder="Search products..."
-            class="search-input"
-          />
-        </a>
+    <header class="dashboard-header">
+      <section class="dashboard-header-inner">
+        <p>Ecommerce</p>
+        <search>
+          <form id="searchForm" (ngSubmit)="onSearchSubmit($event)">
+            <input
+              type="search"
+              id="searchInput"
+              name="searchInput"
+              placeholder="Search here..."
+              aria-label="Search through site content"
+              [ngModel]="searchInput()"
+              (ngModelChange)="searchInput.set($event)"
+            />
+            <button type="submit">Search</button>
+          </form>
+        </search>
+        <span>Browse categories</span>
       </section>
     </header>
 
     <section class="dashboard-products">
-      <p *ngIf="productCount() === 0" class="empty-state">
-        No products are available yet.
+      <p *ngIf="categoryCount() === 0 && !searchInput().trim()" class="empty-state">
+        No categories are available yet.
       </p>
 
-      <ng-container *ngIf="productCount() > 0">
-        <p *ngIf="groupedProducts().length === 0" class="empty-state">
-          No products match your search or quality filter.
-        </p>
+      <div *ngIf="searchInput().trim() && matchingProducts().length === 0" class="empty-state">
+        No products match your search yet.
+      </div>
 
-        <div *ngFor="let group of groupedProducts()" class="category-panel">
-          <button
-            type="button"
-            class="category-header"
-            (click)="toggleCategory(group.category)"
-            [attr.aria-expanded]="isCategoryOpen(group.category)"
-          >
-            <span>{{ group.category }}</span>
-            <span class="category-badge">{{ group.products.length }}</span>
-            <span>{{ isCategoryOpen(group.category) ? '▾' : '▸' }}</span>
-          </button>
+      <div *ngIf="searchInput().trim() && matchingProducts().length > 0" class="product-grid">
+        <article *ngFor="let product of matchingProducts()" class="product-card">
+          <div class="product-info">
+            <h2>{{ product.name }}</h2>
+            <p class="price">${{ product.price.toFixed(2) }}</p>
+            <p>{{ product.description || 'No description available' }}</p>
+          </div>
+          <div class="product-actions">
+            <a [routerLink]="['/product', product.id]">View details</a>
+          </div>
+        </article>
+      </div>
 
-          <ul
-            *ngIf="isCategoryOpen(group.category)"
-            class="product-grid"
-          >
-            <li *ngFor="let product of group.products" class="product-card">
-              <div class="product-panel">
-                <img *ngIf="product.imageUrl" [src]="product.imageUrl" [alt]="product.name" />
-                <div class="product-info">
-                  <h2>{{ product.name }}</h2>
-                  <p class="price">${{ product.price.toFixed(2) }}</p>
-                  <p><strong>Category:</strong> {{ product.category || 'Uncategorized' }}</p>
-                  <p><strong>Quality:</strong> {{ product.quality || 'Not set' }}</p>
-                  <p>{{ product.description || 'No description available' }}</p>
-                </div>
-                <button type="button" class="view-details">
-                  <a [routerLink]="['/product', product.id]" style="color: blue; text-decoration: none;">
-                    View details
-                  </a>
-                </button>
-                <button type="button" class="buy-now" [routerLink]="['/product', product.id]" [queryParams]="{ buy: true }">
-                  <a style="color: blue; text-decoration: none;">
-                    Buy now
-                  </a>
-                </button>
-                <button type="button" class="add-to-cart" (click)="addToCart(product.id)">
-                  <a routerLink="/cart" style="color: blue; text-decoration: none;">
-                    Add to cart
-                  </a>
-                </button>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </ng-container>
+      <div *ngIf="!searchInput().trim() && categoryCount() > 0" class="category-list">
+        <a
+          *ngFor="let category of categories()"
+          class="category-link"
+          [routerLink]="['/category']"
+          [queryParams]="{ category: category }"
+        >
+          <span>{{ category }}</span>
+        </a>
+      </div>
     </section>
   </main>
 </div>
