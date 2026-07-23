@@ -1,0 +1,47 @@
+<div class="login-page">
+  <div class="login-card">
+    <h1>Sign into Daraz</h1>
+    <p>Select whether you are logging in as a customer or admin.</p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="submit()" class="login-form">
+      <label>
+        Username
+        <input type="text" formControlName="username" placeholder="Enter your username" />
+      </label>
+
+      <label>
+        Password
+        <input type="password" formControlName="password" placeholder="Enter your password" />
+      </label>
+
+      <fieldset class="role-fieldset" style="width: 90%;">
+        <legend>Role</legend>
+        <label>
+          <input type="radio" formControlName="role" value="customer" />
+          Customer
+        </label>
+        <label>
+          <input type="radio" formControlName="role" value="admin" />
+          Admin
+        </label>
+      </fieldset>
+
+      <label>
+        <input type="checkbox" formControlName="rememberMe" />
+        Remember me
+      </label>
+
+      <div class="form-actions">
+        <button type="submit">Log in</button>
+        <button type="button" class="secondary" (click)="logout()" *ngIf="isLoggedIn()">
+          Log out
+        </button>
+      </div>
+
+      <p class="register-link">Don't have an account? <a routerLink="/register" style="color: blue;">Register now</a>.</p>
+      <p class="success-message" *ngIf="isLoggedIn() && isAdmin()">You are signed in as admin.</p>
+      <p class="success-message" *ngIf="isLoggedIn() && !isAdmin()">You are signed in as a customer.</p>
+      <p class="error-message" *ngIf="error()">{{ error() }}</p>
+    </form>
+  </div>
+</div>

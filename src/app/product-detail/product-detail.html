@@ -1,0 +1,183 @@
+<div class="product-detail-page">
+  <app-header
+    [searchValue]="searchInput()"
+    (searchValueChange)="searchInput.set($event)"
+    (searchSubmitted)="onSearchSubmit($event)"
+  ></app-header>
+
+  <div class="product-detail-shell">
+    <aside class="product-detail-sidebar" [class.collapsed]="isCollapsed">
+      <button class="toggle-btn" (click)="toggleSidebar()">
+        <!-- Use any icon library (FontAwesome, Material Icons, etc.) -->
+        <span *ngIf="isCollapsed">☰</span>
+        <span *ngIf="!isCollapsed">Categories</span>
+      </button>
+
+      <ng-container *ngIf="!isCollapsed">
+        <a
+        *ngFor="let category of categoryLinks()"
+        class="category-link"
+        [class.active]="product()?.category === category"
+        [routerLink]="['/category']"
+        [queryParams]="{ category }"
+        >
+          {{ category }}
+        </a>
+      </ng-container>
+    </aside>
+
+
+    <div class="product-detail-main">
+      <section class="breadcrumb">
+        <a routerLink="/dashboard">← Back to products</a>
+      </section>
+
+      <ng-container *ngIf="product() as currentProduct; else missingProduct">
+        <section class="product-detail-card">
+          <div class="product-detail-header">
+            <div>
+              <h2>{{ currentProduct.name }}</h2>
+              <p class="category-label">{{ currentProduct.category || 'Uncategorized' }}</p>
+            </div>
+          </div>
+
+          <div class="product-detail-body">
+            <div class="image-panel">
+              <div class="gallery-images" *ngIf="galleryImages().length > 0; else noImageState">
+                <img class="gallery-main-image" [src]="selectedImage() || ''" [alt]="currentProduct.name + ' main image'" />
+                <div class="image-thumbnails">
+                  <button
+                    type="button"
+                    class="image-thumb"
+                    *ngFor="let image of galleryImages(); let i = index"
+                    [class.active]="selectedImageIndex() === i"
+                    (click)="selectImage(i)"
+                  >
+                    <img [src]="image" [alt]="currentProduct.name + ' image ' + (i + 1)" />
+                  </button>
+                </div>
+              </div>
+              <ng-template #noImageState>
+                <div class="gallery-placeholder">No image available</div>
+              </ng-template>
+            </div>
+
+            <div class="product-detail-info">
+              <div class="price-row">
+                <p class="price">${{ currentProduct.price.toFixed(2) }}</p>
+                <p class="quality-pill">{{ currentProduct.quality || 'Not set' }}</p>
+              </div>
+
+              <div class="detail-copy">
+                <h2>Product description</h2>
+                <p>{{ currentProduct.description || 'No description available' }}</p>
+                <div class="details-card">
+                  <h3>Details</h3>
+                  <p class="details-text">{{ currentProduct.details || 'No additional details available.' }}</p>
+                </div>
+              </div>
+
+              <div class="buy-now-panel">
+                <div class="action-buttons">
+                  <button type="button" class="add-to-cart" (click)="addToCart(currentProduct.id)">
+                    Add to cart
+                  </button>
+                  <button type="button" class="buy-now" (click)="buyNow(currentProduct.id)">
+                    Buy now
+                  </button>
+                </div>
+
+                <label>
+                  Phone number
+                  <input
+                    type="tel"
+                    [(ngModel)]="buyerPhone"
+                    placeholder="Enter phone number"
+                    aria-label="Phone number for purchase"
+                  />
+                </label>
+
+                <p *ngIf="purchaseError()" class="error-message">{{ purchaseError() }}</p>
+                <p *ngIf="purchaseMessage()" class="success-message">{{ purchaseMessage() }}</p>
+              </div>
+            </div>
+
+            <aside class="side-panel">
+              <div class="Delivery-panel">
+                <h3>Delivery</h3>
+                <p>Dhaka, Dhaka North, Banani Road No. 12 - 19</p>
+                <p>Cash on Delivery Available</p>
+                <p>Delivery Time: 3-5 business days</p>
+                <p>Delivery fee: $5.99</p>
+              </div>
+
+              <div class="warranty-panel">
+                <h3>Warranty</h3>
+                @if (currentProduct.warranty) {
+                  <p>{{ currentProduct.warranty }}</p>
+                } @else {
+                  <p>No warranty information provided.</p>
+                }
+              </div>
+
+              <div class="qr-panel" aria-label="Product QR code">
+                <h3>Quick scan</h3>
+                <svg viewBox="0 0 96 96" role="img" aria-label="QR code placeholder">
+                  <rect x="6" y="6" width="24" height="24" rx="3" />
+                  <rect x="12" y="12" width="12" height="12" fill="#fff" />
+                  <rect x="66" y="6" width="24" height="24" rx="3" />
+                  <rect x="72" y="12" width="12" height="12" fill="#fff" />
+                  <rect x="6" y="66" width="24" height="24" rx="3" />
+                  <rect x="12" y="72" width="12" height="12" fill="#fff" />
+                  <rect x="36" y="36" width="24" height="24" rx="3" />
+                  <rect x="42" y="42" width="12" height="12" fill="#fff" />
+                  <rect x="66" y="36" width="24" height="24" rx="3" />
+                  <rect x="72" y="42" width="12" height="12" fill="#fff" />
+                  <rect x="36" y="66" width="24" height="24" rx="3" />
+                  <rect x="42" y="72" width="12" height="12" fill="#fff" />
+                  <rect x="36" y="6" width="6" height="6" />
+                  <rect x="54" y="24" width="6" height="6" />
+                  <rect x="24" y="54" width="6" height="6" />
+                  <rect x="66" y="66" width="6" height="6" />
+                </svg>
+              </div>
+            </aside>
+          </div>
+
+          <div class="product-footer">
+            <div class="rating-summary-block">
+              <p><strong>Customer rating: ⭐</strong> {{ currentProduct.rating ? (currentProduct.rating | number:'1.1-1') : 'Not yet rated' }}</p>
+              <p *ngIf="currentProduct.ratingCount && currentProduct.ratingCount > 0" class="rating-summary">
+                Based on {{ currentProduct.ratingCount }} review{{ currentProduct.ratingCount === 1 ? '' : 's' }}.
+              </p>
+            </div>
+
+            <div class="rating-panel" *ngIf="canRate()">
+              <h2>Rate this product</h2>
+              <label>
+                Your rating
+                <select [ngModel]="ratingInput()" (ngModelChange)="ratingInput.set($event)" aria-label="Select a rating">
+                  <option [ngValue]="null" disabled selected>Select a star rating</option>
+                  <option [ngValue]="5">5 stars</option>
+                  <option [ngValue]="4">4 stars</option>
+                  <option [ngValue]="3">3 stars</option>
+                  <option [ngValue]="2">2 stars</option>
+                  <option [ngValue]="1">1 star</option>
+                </select>
+              </label>
+              <button type="button" class="rating-submit" (click)="submitRating()">
+                Submit rating
+              </button>
+              <p *ngIf="ratingError()" class="error-message">{{ ratingError() }}</p>
+              <p *ngIf="ratingMessage()" class="success-message">{{ ratingMessage() }}</p>
+            </div>
+          </div>
+        </section>
+      </ng-container>
+    </div>
+  </div>
+
+  <ng-template #missingProduct>
+    <p class="missing-product">Product not found. Return to the dashboard to choose another item.</p>
+  </ng-template>
+</div>

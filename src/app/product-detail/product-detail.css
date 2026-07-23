@@ -1,0 +1,378 @@
+.product-detail-page {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.product-detail-shell {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-top: 1rem;
+}
+
+.product-detail-sidebar {
+  position: sticky;
+  top: 1rem;
+  width: 180px;
+  padding: 1rem;
+  border-radius: 0rem;
+  background: #f8fbff;
+  border: 1px solid #e4ebf4;
+}
+
+.product-detail-sidebar h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.05rem;
+  color: #0f172a;
+}
+
+.product-detail-sidebar.collapsed {
+  width: 10px; /* just enough for the icon */
+  height: 10px;
+  overflow: hidden;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.category-link {
+  display: block;
+  height: 0.75rem;
+  margin-bottom: 0.25rem;
+  padding: 0.5rem 0.5rem;
+  border-radius: 0rem;
+  color: #334e68;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 400;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.category-link:hover,
+.category-link.active {
+  background: #e8f0ff;
+  color: #1d4ed8;
+}
+
+.product-detail-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.breadcrumb a {
+  color: #0e4c92;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.product-detail-card {
+  margin-top: 1rem;
+  border: 1px solid #d8e1ed;
+  border-radius: 0rem;
+  padding: 1.5rem;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(10, 31, 58, 0.08);
+}
+
+.product-detail-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-detail-header h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.5rem;
+}
+
+.category-label {
+  display: inline-block;
+  background: #eef6ff;
+  color: #0e4c92;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+}
+
+.product-detail-body {
+  display: grid;
+  grid-template-columns: minmax(220px, 320px) minmax(0, 1.15fr) minmax(220px, 260px);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.image-panel,
+.side-panel,
+.product-detail-info {
+  display: grid;
+  gap: 1rem;
+}
+
+.gallery-images {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.gallery-main-image,
+.gallery-placeholder {
+  width: 100%;
+  min-height: 220px;
+  border-radius: 0rem;
+  object-fit: cover;
+  background: #f4f7fb;
+  border: 1px solid #e4ebf4;
+}
+
+.gallery-placeholder {
+  display: grid;
+  place-items: center;
+  color: #47627d;
+  font-weight: 600;
+}
+
+.image-thumbnails {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.image-thumb {
+  border: 1px solid #dfe7f0;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  padding: 0;
+  background: #fff;
+  cursor: pointer;
+}
+
+.image-thumb img {
+  width: 100%;
+  height: 70px;
+  object-fit: cover;
+  display: block;
+}
+
+.image-thumb.active {
+  border-color: #0e4c92;
+  box-shadow: 0 0 0 2px rgba(14, 76, 146, 0.18);
+}
+
+.price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.price {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0e4c92;
+  margin: 0;
+}
+
+.quality-pill {
+  margin: 0;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: #eef6ff;
+  color: #0e4c92;
+  font-weight: 600;
+}
+
+.detail-copy {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.detail-copy h2,
+.details-card h3,
+.warranty-panel h3,
+.qr-panel h3,
+.rating-panel h2 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.detail-copy p,
+.details-card p,
+.warranty-panel p,
+.rating-summary-block p {
+  margin: 0;
+  color: #334e68;
+  line-height: 1.6;
+}
+
+.details-card {
+  padding: 0.9rem 1rem;
+  border-radius: 0rem;
+  background: #f8fbff;
+  border: 1px solid #e4ebf4;
+}
+
+.buy-now-panel {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 0rem;
+  background: #f8fbff;
+  border: 1px solid #e4ebf4;
+}
+
+.action-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.buy-now-panel label,
+.rating-panel label {
+  display: grid;
+  gap: 0.35rem;
+  font-weight: 600;
+  color: #1a3045;
+}
+
+.buy-now-panel input,
+.rating-panel select {
+  width: 90%;
+  border: 1px solid #cbd7e5;
+  border-radius: 0rem;
+  padding: 0.8rem 0.95rem;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 450;
+}
+
+.buy-now,
+.rating-submit {
+  border: none;
+  border-radius: 0rem;
+  padding: 0.85rem 1rem;
+  background: #2a8a2a;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 450;
+  font-size: 0.8rem;
+}
+
+.add-to-cart {
+  border: none;
+  border-radius: 0rem;
+  padding: 0.85rem 1rem;
+  background: #0e4c92;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 450;
+  font-size: 0.8rem;
+}
+
+.side-panel {
+  padding: 1rem;
+  border-radius: 0rem;
+  background: #f8fbff;
+  border: 1px solid #e4ebf4;
+}
+
+.delivery-panel {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.warranty-panel,
+.qr-panel {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.qr-panel svg {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  padding: 0.75rem;
+  border-radius: 0rem;
+  background: #fff;
+  border: 1px solid #e4ebf4;
+}
+
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e4ebf4;
+}
+
+.rating-panel {
+  display: grid;
+  gap: 0.75rem;
+  min-width: 220px;
+}
+
+.rating-summary {
+  margin: 0;
+  color: #47627d;
+}
+
+.details-text {
+  margin: 0;
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+
+.error-message,
+.success-message {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.error-message {
+  color: #d13232;
+}
+
+.success-message {
+  color: #0e4c92;
+}
+
+.missing-product {
+  padding: 2rem 1rem;
+  color: #334e68;
+}
+
+@media (max-width: 900px) {
+  .product-detail-shell {
+    flex-direction: column;
+  }
+
+  .product-detail-sidebar {
+    position: static;
+    width: 100%;
+  }
+
+  .product-detail-body {
+    grid-template-columns: 1fr;
+  }
+
+  .product-footer {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 560px) {
+  .action-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-images {
+    grid-template-columns: 1fr;
+  }
+}

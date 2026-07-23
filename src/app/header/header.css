@@ -1,0 +1,136 @@
+:host {
+  display: block;
+}
+
+:host {
+  --ink: #232c3b;
+  --paper: #fff;
+  --brass: #c08a2e;
+  --line: #cfc4a8;
+  --card: #fff;
+  --danger: #a14a32;
+}
+
+.app-header {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.topbar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 28px;
+  padding: 8px 5vw 0;
+  font-family: Space Mono, monospace;
+  font-size: 12px;
+  letter-spacing: .04em;
+  color: var(--ink);
+  opacity: .75;
+}
+
+.topbar a {
+  position: relative;
+}
+
+.topbar a:hover {
+  opacity: 1;
+  color: var(--brass);
+}
+
+.navrow {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 14px 5vw 18px;
+}
+
+.logo {
+  font-family: Fraunces, serif;
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: -.01em;
+  white-space: nowrap;
+}
+
+.search {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  border: 1.5px solid var(--ink);
+  background: var(--card);
+  max-width: 640px;
+}
+
+.search input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 11px 14px;
+  font-family: Archivo, sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+  outline: none;
+}
+
+.search input::placeholder {
+  color: #8b8578;
+}
+
+.search button {
+  border: none;
+  border-left: 1.5px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  width: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.search button svg {
+  width: 17px;
+  height: 17px;
+  stroke: var(--paper);
+}
+
+.cart-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: Space Mono, monospace;
+  font-size: 13px;
+  color: var(--ink);
+}
+
+.cart-btn svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--ink);
+  fill: none;
+  stroke-width: 1.6;
+}
+
+.cart-count {
+  background: var(--danger);
+  color: var(--paper);
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stitch {
+  height: 1px;
+  background-image: repeating-linear-gradient(90deg, var(--ink) 0 6px, transparent 6px 12px);
+  opacity: .45;
+}

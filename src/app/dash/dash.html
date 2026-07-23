@@ -1,0 +1,157 @@
+<app-header
+  [searchValue]="searchInput()"
+  (searchValueChange)="searchInput.set($event)"
+  (searchSubmitted)="onSearchSubmit($event)"
+></app-header>
+
+<section class="hero-section">
+  <div class="carousel" id="carousel">
+    <div class="slides" id="slides" [style.transform]="'translateX(-' + (current() * 100) + '%)'">
+      <div class="slide" *ngFor="let slide of slides">
+        <div>
+          <img [src]="slide.imageUrl" alt="Product Image">
+          <a [routerLink]="['/product', slide.productId]" class="btn">Shop now</a>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-arrow prev" aria-label="Previous slide" (click)="moveSlide(-1)">
+      <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button class="carousel-arrow next" aria-label="Next slide" (click)="moveSlide(1)">
+      <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+    <div class="dots" id="dots">
+      <div
+        class="dot"
+        *ngFor="let slide of slides; let i = index"
+        [class.active]="i === current()"
+        (click)="goTo(i)"
+      ></div>
+    </div>
+  </div>
+
+  <div class="app-card" style="background-image: url('Screenshot 2026-07-05 102243.png'); background-position: center; background-size: cover;">
+    <div class="app-screenshot"></div>
+    <p>Download the app</p>
+    <button><a href="https://apps.apple.com/bd/app/daraz-online-shopping-app/id978058048" class="btn">App Store</a></button>
+    <button><a href="https://play.google.com/store/apps/details?id=com.daraz.android" class="btn">Google Play</a></button>
+  </div>
+</section>
+
+<section class="section" id="flash">
+  <div class="section-head">
+    <div>
+      <h2>Flash sale</h2>
+      <div class="tag" id="clockLabel">{{ clockLabel() }}</div>
+    </div>
+    <a href="#" class="see-all">See all →</a>
+  </div>
+  <div class="flash-row">
+    <article class="product-card">
+      <div class="product-thumb t1"><span class="badge">−30%</span></div>
+      <div class="product-info">
+        <div class="name">Ochre Threadbound Journal</div>
+        <div class="price-row"><span class="price-now">$18</span><span class="price-old">$26</span></div>
+      </div>
+    </article>
+    <article class="product-card">
+      <div class="product-thumb t2"><span class="badge">−20%</span></div>
+      <div class="product-info">
+        <div class="name">Ferrari Engine Toolkit</div>
+        <div class="price-row"><span class="price-now">$26</span><span class="price-old">$35</span></div>
+      </div>
+    </article>
+    <article class="product-card">
+      <div class="product-thumb t3"><span class="badge">−25%</span></div>
+      <div class="product-info">
+        <div class="name">Rolex Watch</div>
+        <div class="price-row"><span class="price-now">$18</span><span class="price-old">$26</span></div>
+      </div>
+    </article>
+    <article class="product-card">
+      <div class="product-thumb t4"><span class="badge">−20%</span></div>
+      <div class="product-info">
+        <div class="name">2027 Wallpaper Calender</div>
+        <div class="price-row"><span class="price-now">$15</span><span class="price-old">$26</span></div>
+      </div>
+    </article>
+    <article class="product-card">
+      <div class="product-thumb t5"><span class="badge">−15%</span></div>
+      <div class="product-info">
+        <div class="name">Rayban Glasses</div>
+        <div class="price-row"><span class="price-now">$20</span><span class="price-old">$26</span></div>
+      </div>
+    </article>
+    <article class="product-card">
+      <div class="product-thumb t6"><span class="badge">−10%</span></div>
+      <div class="product-info">
+        <div class="name">Water Bottle</div>
+        <div class="price-row"><span class="price-now">$8</span><span class="price-old">$10</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="categories">
+  <div class="section-head">
+    <h2>Categories</h2>
+    <a href="category" class="see-all">Browse all →</a>
+  </div>
+  <div class="cat-grid">
+    <a class="cat-card" href="category?category=Journals">
+      <div class="cat-thumb c1"></div>
+      <div class="name">Journals</div>
+    </a>
+    <a class="cat-card" href="category?category=Electronics">
+      <div class="cat-thumb c2"></div>
+      <div class="name">Electronics</div>
+    </a>
+    <a class="cat-card" href="category?category=Desk%20Tools">
+      <div class="cat-thumb c3"></div>
+      <div class="name">Desk Tools</div>
+    </a>
+    <a class="cat-card" href="category?category=Inks%20and%20Pens">
+      <div class="cat-thumb c4"></div>
+      <div class="name">Inks and Pens</div>
+    </a>
+    <a class="cat-card" href="category?category=Sealing%20%26%20Wax">
+      <div class="cat-thumb c5"></div>
+      <div class="name">Sealing & Wax</div>
+    </a>
+    <a class="cat-card" href="category?category=Folios%20%26%20Files">
+      <div class="cat-thumb c6"></div>
+      <div class="name">Folios & Files</div>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="products">
+  <div class="section-head">
+    <div>
+      <h2>Featured products</h2>
+      <div class="tag">{{ searchInput().trim() ? 'Search results' : 'Tap any item to open details' }}</div>
+    </div>
+    <a routerLink="/category" class="see-all">Browse all →</a>
+  </div>
+  <div class="flash-row" *ngIf="visibleProducts().length > 0; else noProducts">
+    <article class="product-card" *ngFor="let product of visibleProducts()">
+      <a [routerLink]="['/product', product.id]" class="product-link">
+        <div class="product-thumb" [style.background-image]="product.imageUrl ? 'url(' + product.imageUrl + ')' : 'none'">
+          <span class="badge">New</span>
+        </div>
+        <div class="product-info">
+          <div class="name">{{ product.name }}</div>
+          <div class="price-row">
+            <span class="price-now">${{ product.price.toFixed(2) }}</span>
+          </div>
+        </div>
+      </a>
+    </article>
+  </div>
+  <ng-template #noProducts>
+    <p>No products match your search yet.</p>
+  </ng-template>
+</section>
+
+<div class="stitch"></div>
+<footer>Fieldnote Supply Co. — made for people who write things down</footer>

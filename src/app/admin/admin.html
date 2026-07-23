@@ -1,0 +1,122 @@
+<div class="admin-page">
+  <section class="admin-header">
+    <h1>Product Management</h1>
+    <p>Use this page to add products, set quality, attach images, and keep prices up to date.</p>
+  </section>
+
+  <section class="admin-body">
+    <form class="product-form" [formGroup]="productForm" (ngSubmit)="addOrUpdateProduct()">
+      <label>
+        Product name
+        <input formControlName="name" placeholder="Enter product name" />
+      </label>
+
+      <label>
+        Description
+        <textarea formControlName="description" rows="3" placeholder="Add a description"></textarea>
+      </label>
+
+      <label>
+        Details
+        <textarea formControlName="details" rows="3" placeholder="Add detailed information for the product page"></textarea>
+      </label>
+
+      <label>
+        Quality/Brand
+        <input formControlName="quality" placeholder="Example: Premium, Standard, Used" />
+      </label>
+
+      <label>
+        Category
+        <select formControlName="category">
+          <option value="">Select a category</option>
+          <option *ngFor="let category of availableCategories" [value]="category">
+            {{ category }}
+          </option>
+        </select>
+      </label>
+
+      <label>
+        Price
+        <input type="number" formControlName="price" min="0" step="0.01" />
+      </label>
+
+      <label>
+        Image URL 1
+        <input formControlName="imageUrl" placeholder="https://example.com/product-1.jpg" />
+      </label>
+
+      <label>
+        Image URL 2
+        <input formControlName="imageUrl2" placeholder="https://example.com/product-2.jpg" />
+      </label>
+
+      <label>
+        Image URL 3
+        <input formControlName="imageUrl3" placeholder="https://example.com/product-3.jpg" />
+      </label>
+
+      <label>
+        Warranty
+        <input formControlName="warranty" placeholder="Example: 1 year, 6 months" />
+      </label>
+
+      <div class="form-actions">
+        <button type="submit" [disabled]="productForm.invalid">{{ saveLabel() }}</button>
+        <button type="button" class="secondary" (click)="resetForm()">Clear form</button>
+      </div>
+    </form>
+
+    <aside *ngIf="productForm.get('imageUrl')?.value || productForm.get('imageUrl2')?.value || productForm.get('imageUrl3')?.value" class="preview-panel">
+      <h2>Image preview</h2>
+      <img
+        [src]="productForm.get('imageUrl')?.value || productForm.get('imageUrl2')?.value || productForm.get('imageUrl3')?.value"
+        alt="Product image preview"
+      />
+      <p><strong>Name:</strong> {{ productForm.get('name')?.value || 'Untitled' }}</p>
+      <p>
+        <strong>Price:</strong>
+        {{ productForm.get('price')?.value | number:'1.2-2' }}
+      </p>
+    </aside>
+  </section>
+
+  <section class="admin-actions">
+    <button type="button" class="logout-button" (click)="logout()">Log out</button>
+  </section>
+
+  <section class="products-list">
+    <div class="list-header">
+      <h2>Products ({{ productCount() }})</h2>
+    </div>
+
+    <ul *ngIf="productCount() > 0; else emptyState">
+      <li class="product-card" *ngFor="let product of products()">
+        <ng-container *ngIf="getPrimaryImage(product); else placeholderImage">
+          <img class="product-image" [src]="getPrimaryImage(product)" alt="{{ product.name }}" />
+        </ng-container>
+
+        <ng-template #placeholderImage>
+          <div class="product-image placeholder">No image</div>
+        </ng-template>
+
+        <div class="product-details">
+          <h3>{{ product.name }}</h3>
+          <p class="price">${{ product.price.toFixed(2) }}</p>
+          <p><strong>Category:</strong> {{ product.category || 'Uncategorized' }}</p>
+          <p><strong>Quality:</strong> {{ product.quality || 'Not set' }}</p>
+          <p>{{ product.description || 'No description provided' }}</p>
+        </div>
+
+        <div class="product-actions">
+          <button type="button" (click)="selectProduct(product)">Edit</button>
+          <button type="button" class="danger" (click)="deleteProduct(product)">Delete</button>
+        </div>
+      </li>
+    </ul>
+
+    <ng-template #emptyState>
+      <p class="empty-state">No products yet. Add a product to get started.</p>
+    </ng-template>
+  </section>
+</div>
