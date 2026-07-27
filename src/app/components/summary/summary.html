@@ -1,0 +1,3 @@
+@if (!dataService.loading() && dataService.pokemons().length > 0) {
+  <p><strong>{{ dataService.pokemons().length }}</strong> pokemon loaded.</p>
+}

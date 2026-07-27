@@ -1,0 +1,16 @@
+@if (dataService.loading()) {
+  <p>Loading pokemon...</p>
+} @else if (dataService.error()) {
+  <p>{{ dataService.error() }}</p>
+} @else {
+  <ul>
+    @for (p of dataService.pokemons(); track p.id) {
+      <li>
+        <img [src]="p.sprite" [alt]="p.name" width="48" />
+        <strong>{{ p.name }}</strong>
+        (#{{ p.id }}) — {{ p.types.join(', ') }},
+        {{ p.height }}dm / {{ p.weight }}hg
+      </li>
+    }
+  </ul>
+}
